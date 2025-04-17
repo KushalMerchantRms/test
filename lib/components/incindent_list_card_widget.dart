@@ -20,6 +20,9 @@ class IncindentListCardWidget extends StatefulWidget {
 
 class _IncindentListCardWidgetState extends State<IncindentListCardWidget> {
   late IncindentListCardModel _model;
+  // Save the current scroll position before adding data
+  double _currentScrollPosition = 0.0;
+
 
   @override
   void setState(VoidCallback callback) {
@@ -32,7 +35,11 @@ class _IncindentListCardWidgetState extends State<IncindentListCardWidget> {
     super.initState();
     _model = createModel(context, () => IncindentListCardModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Save the scroll position after the first build
+      _currentScrollPosition = _model.listViewController1?.offset ?? 0.0;
+      safeSetState(() {});
+    });
   }
 
   @override
@@ -141,6 +148,7 @@ class _IncindentListCardWidgetState extends State<IncindentListCardWidget> {
                                         size: 20.0,
                                       ),
                                       onPressed: () async {
+                                        // Use the saved scroll position to scroll to top
                                         await _model.listViewController1
                                             ?.animateTo(
                                           0,
@@ -288,6 +296,7 @@ class _IncindentListCardWidgetState extends State<IncindentListCardWidget> {
                                       size: 20.0,
                                     ),
                                     onPressed: () async {
+                                      // Scroll to the bottom using saved position
                                       await _model.listViewController2
                                           ?.animateTo(
                                         _model.listViewController2!.position
