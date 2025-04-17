@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "963839653458",
+    "project_id": "visu-backend-firebase-dev",
+    "storage_bucket": "visu-backend-firebase-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963839653458:android:abb18b7da251fe276fd18b",
+        "android_client_info": {
+          "package_name": "com.mycompany.ageverification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963839653458-bod9e7h3h9lf3qjjfj9oo7doluamip0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGUjnQCzWYMHrODa6P-xT-5A1eYRcDG9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963839653458-bod9e7h3h9lf3qjjfj9oo7doluamip0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963839653458:android:024decf35c4f2bbd6fd18b",
+        "android_client_info": {
+          "package_name": "com.mycompany.mrms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963839653458-bod9e7h3h9lf3qjjfj9oo7doluamip0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGUjnQCzWYMHrODa6P-xT-5A1eYRcDG9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963839653458-bod9e7h3h9lf3qjjfj9oo7doluamip0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963839653458:android:8c10717e766348366fd18b",
+        "android_client_info": {
+          "package_name": "com.visuai.customertheft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963839653458-bod9e7h3h9lf3qjjfj9oo7doluamip0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGUjnQCzWYMHrODa6P-xT-5A1eYRcDG9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963839653458-bod9e7h3h9lf3qjjfj9oo7doluamip0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
