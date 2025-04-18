@@ -50,10 +50,10 @@ class FilterBottomSheetModel extends FlutterFlowModel<FilterBottomSheetWidget> {
   ApiCallResponse? apiResult6ku4;
   // Stores action output result for [Backend Call - API (Camera Count)] action in Button widget.
   ApiCallResponse? apiResult91x;
-  // Stores action output result for [Custom Action - getIncident] action in Button widget.
-  List<dynamic>? alInciodentData3;
   // Stores action output result for [Custom Action - getIncidentCount] action in Button widget.
   dynamic alInciodentCountFilter;
+  // Stores action output result for [Custom Action - getIncident] action in Button widget.
+  List<dynamic>? alInciodentData3;
   // Stores action output result for [Backend Call - API (BlackList)] action in Button widget.
   ApiCallResponse? apiResult1g0;
   // Stores action output result for [Backend Call - API (Black list count)] action in Button widget.

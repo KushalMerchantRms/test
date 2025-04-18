@@ -415,7 +415,13 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                           isShow: true,
                                           isScreen: 'Incident',
                                           action: () async {
-                                            FFAppState().currentOffsetAlert = 0;
+                                            FFAppState().currentOffsetAlert =
+                                                getJsonField(
+                                                      FFAppState()
+                                                          .incidentCount,
+                                                      r'''$.count''',
+                                                    ) -
+                                                    2;
                                             safeSetState(() {});
                                           },
                                         ),
@@ -492,36 +498,6 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                     safeSetState(() {});
                                     await Future.wait([
                                       Future(() async {
-                                        _model.alInciodentDatatempall =
-                                            await actions.getIncident(
-                                          FFAppState().storeID,
-                                          functions
-                                              .adjustList(FFAppState()
-                                                  .finalIncident
-                                                  .toList())
-                                              ?.toList(),
-                                          FFAppState().duration != 'Custom'
-                                              ? functions.getRangeOfDate(
-                                                  FFAppState().duration)
-                                              : dateTimeFormat("yyyy-MM-dd",
-                                                  FFAppState().finalStartDate),
-                                          FFAppState().duration != 'Custom'
-                                              ? dateTimeFormat("yyyy-MM-dd",
-                                                  getCurrentTimestamp)
-                                              : dateTimeFormat("yyyy-MM-dd",
-                                                  FFAppState().finalEndDate),
-                                          0,
-                                          5,
-                                          FFAppState().token,
-                                          null,
-                                        );
-                                        FFAppState().IncidentUrl = _model
-                                            .alInciodentDatatempall!
-                                            .toList()
-                                            .cast<dynamic>();
-                                        safeSetState(() {});
-                                      }),
-                                      Future(() async {
                                         _model.alInciodentCounttempall =
                                             await actions.getIncidentCount(
                                           FFAppState().storeID,
@@ -544,6 +520,51 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                         );
                                         FFAppState().incidentCount =
                                             _model.alInciodentCounttempall!;
+                                        FFAppState().currentOffsetAlert =
+                                            (getJsonField(
+                                                          _model
+                                                              .alInciodentCounttempall,
+                                                          r'''$.count''',
+                                                        ) -
+                                                        2) >=
+                                                    0
+                                                ? (getJsonField(
+                                                      _model
+                                                          .alInciodentCounttempall,
+                                                      r'''$.count''',
+                                                    ) -
+                                                    2)
+                                                : 0;
+                                        FFAppState().currentOffsetAlertTop =
+                                            FFAppState().currentOffsetAlert;
+                                        FFAppState().update(() {});
+                                        _model.alInciodentDatatempall =
+                                            await actions.getIncident(
+                                          FFAppState().storeID,
+                                          functions
+                                              .adjustList(FFAppState()
+                                                  .finalIncident
+                                                  .toList())
+                                              ?.toList(),
+                                          FFAppState().duration != 'Custom'
+                                              ? functions.getRangeOfDate(
+                                                  FFAppState().duration)
+                                              : dateTimeFormat("yyyy-MM-dd",
+                                                  FFAppState().finalStartDate),
+                                          FFAppState().duration != 'Custom'
+                                              ? dateTimeFormat("yyyy-MM-dd",
+                                                  getCurrentTimestamp)
+                                              : dateTimeFormat("yyyy-MM-dd",
+                                                  FFAppState().finalEndDate),
+                                          FFAppState().currentOffsetAlert,
+                                          5,
+                                          FFAppState().token,
+                                          FFAppState().listOrder,
+                                        );
+                                        FFAppState().IncidentUrl = _model
+                                            .alInciodentDatatempall!
+                                            .toList()
+                                            .cast<dynamic>();
                                         safeSetState(() {});
                                       }),
                                     ]);
@@ -613,32 +634,6 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                     FFAppState().update(() {});
                                     await Future.wait([
                                       Future(() async {
-                                        _model.removeciodentData3 =
-                                            await actions.getIncident(
-                                          FFAppState().storeID,
-                                          FFAppState().finalIncident.toList(),
-                                          FFAppState().duration != 'Custom'
-                                              ? functions.getRangeOfDate(
-                                                  FFAppState().duration)
-                                              : dateTimeFormat("yyyy-MM-dd",
-                                                  FFAppState().finalStartDate),
-                                          FFAppState().duration != 'Custom'
-                                              ? dateTimeFormat("yyyy-MM-dd",
-                                                  getCurrentTimestamp)
-                                              : dateTimeFormat("yyyy-MM-dd",
-                                                  FFAppState().finalEndDate),
-                                          0,
-                                          5,
-                                          FFAppState().token,
-                                          null,
-                                        );
-                                        FFAppState().IncidentUrl = _model
-                                            .removeciodentData3!
-                                            .toList()
-                                            .cast<dynamic>();
-                                        FFAppState().update(() {});
-                                      }),
-                                      Future(() async {
                                         _model.removenciodentCountFilter =
                                             await actions.getIncidentCount(
                                           FFAppState().storeID,
@@ -657,7 +652,48 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                         );
                                         FFAppState().incidentCount =
                                             _model.removenciodentCountFilter!;
+                                        FFAppState().currentOffsetAlert =
+                                            (getJsonField(
+                                                          _model
+                                                              .removenciodentCountFilter,
+                                                          r'''$.count''',
+                                                        ) -
+                                                        2) >=
+                                                    0
+                                                ? (getJsonField(
+                                                      _model
+                                                          .removenciodentCountFilter,
+                                                      r'''$.count''',
+                                                    ) -
+                                                    2)
+                                                : 0;
+                                        FFAppState().currentOffsetAlertTop =
+                                            FFAppState().currentOffsetAlert;
                                         safeSetState(() {});
+                                        _model.removeciodentData3 =
+                                            await actions.getIncident(
+                                          FFAppState().storeID,
+                                          FFAppState().finalIncident.toList(),
+                                          FFAppState().duration != 'Custom'
+                                              ? functions.getRangeOfDate(
+                                                  FFAppState().duration)
+                                              : dateTimeFormat("yyyy-MM-dd",
+                                                  FFAppState().finalStartDate),
+                                          FFAppState().duration != 'Custom'
+                                              ? dateTimeFormat("yyyy-MM-dd",
+                                                  getCurrentTimestamp)
+                                              : dateTimeFormat("yyyy-MM-dd",
+                                                  FFAppState().finalEndDate),
+                                          FFAppState().currentOffsetAlert,
+                                          5,
+                                          FFAppState().token,
+                                          FFAppState().listOrder,
+                                        );
+                                        FFAppState().IncidentUrl = _model
+                                            .removeciodentData3!
+                                            .toList()
+                                            .cast<dynamic>();
+                                        FFAppState().update(() {});
                                       }),
                                     ]);
 
@@ -764,32 +800,6 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                     FFAppState().update(() {});
                                     await Future.wait([
                                       Future(() async {
-                                        _model.removeciodentData =
-                                            await actions.getIncident(
-                                          FFAppState().storeID,
-                                          FFAppState().finalIncident.toList(),
-                                          FFAppState().duration != 'Custom'
-                                              ? functions.getRangeOfDate(
-                                                  FFAppState().duration)
-                                              : dateTimeFormat("yyyy-MM-dd",
-                                                  FFAppState().finalStartDate),
-                                          FFAppState().duration != 'Custom'
-                                              ? dateTimeFormat("yyyy-MM-dd",
-                                                  getCurrentTimestamp)
-                                              : dateTimeFormat("yyyy-MM-dd",
-                                                  FFAppState().finalEndDate),
-                                          0,
-                                          5,
-                                          FFAppState().token,
-                                          null,
-                                        );
-                                        FFAppState().IncidentUrl = _model
-                                            .removeciodentData!
-                                            .toList()
-                                            .cast<dynamic>();
-                                        FFAppState().update(() {});
-                                      }),
-                                      Future(() async {
                                         _model.removenciodentCount =
                                             await actions.getIncidentCount(
                                           FFAppState().storeID,
@@ -808,7 +818,49 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                         );
                                         FFAppState().incidentCount =
                                             _model.removenciodentCount!;
+                                        FFAppState()
+                                            .currentOffsetAlert = (getJsonField(
+                                                      _model
+                                                          .removenciodentCount,
+                                                      r'''$.count''',
+                                                    ) -
+                                                    2) >=
+                                                0
+                                            ? (getJsonField(
+                                                  _model.removenciodentCount,
+                                                  r'''$.count''',
+                                                ) -
+                                                2)
+                                            : 0;
+                                        FFAppState().currentOffsetAlertTop =
+                                            FFAppState().currentOffsetAlert;
                                         safeSetState(() {});
+                                        _model.removeciodentData =
+                                            await actions.getIncident(
+                                          FFAppState().storeID,
+                                          FFAppState().finalIncident.toList(),
+                                          FFAppState().duration != 'Custom'
+                                              ? functions.getRangeOfDate(
+                                                  FFAppState().duration)
+                                              : dateTimeFormat("yyyy-MM-dd",
+                                                  FFAppState().finalStartDate),
+                                          FFAppState().duration != 'Custom'
+                                              ? dateTimeFormat("yyyy-MM-dd",
+                                                  getCurrentTimestamp)
+                                              : dateTimeFormat("yyyy-MM-dd",
+                                                  FFAppState().finalEndDate),
+                                          FFAppState().currentOffsetAlert,
+                                          5,
+                                          FFAppState().token,
+                                          FFAppState().listOrder,
+                                        );
+                                        FFAppState().IncidentUrl = [];
+                                        FFAppState().update(() {});
+                                        FFAppState().IncidentUrl = _model
+                                            .removeciodentData!
+                                            .toList()
+                                            .cast<dynamic>();
+                                        FFAppState().update(() {});
                                       }),
                                     ]);
 
@@ -1005,8 +1057,8 @@ class _IncidentScreenWidgetState extends State<IncidentScreenWidget> {
                                 safeSetState(() {});
                               },
                               onTopOfPage: () async {
-                                if ((FFAppState().currentOffsetAlert >= 0) ||
-                                    (FFAppState().currentOffsetAlertTop >= 0)) {
+                                if ((FFAppState().currentOffsetAlert > 0) ||
+                                    (FFAppState().currentOffsetAlertTop > 0)) {
                                   FFAppState().isLoadingTop = true;
                                   safeSetState(() {});
                                   FFAppState().currentOffsetAlertTop =

@@ -1337,35 +1337,6 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                                       FFAppState().update(() {});
                                       await Future.wait([
                                         Future(() async {
-                                          _model.alInciodentData3 =
-                                              await actions.getIncident(
-                                            FFAppState().storeID,
-                                            FFAppState().finalIncident.toList(),
-                                            FFAppState().duration != 'Custom'
-                                                ? functions.getRangeOfDate(
-                                                    FFAppState().duration)
-                                                : dateTimeFormat(
-                                                    "yyyy-MM-dd",
-                                                    FFAppState()
-                                                        .finalStartDate),
-                                            FFAppState().duration != 'Custom'
-                                                ? dateTimeFormat("yyyy-MM-dd",
-                                                    getCurrentTimestamp)
-                                                : dateTimeFormat("yyyy-MM-dd",
-                                                    FFAppState().finalEndDate),
-                                            0,
-                                            5,
-                                            FFAppState().token,
-                                            null,
-                                          );
-                                          FFAppState().IncidentUrl = _model
-                                              .alInciodentData3!
-                                              .toList()
-                                              .cast<dynamic>();
-                                          FFAppState().update(() {});
-                                          await widget.action?.call();
-                                        }),
-                                        Future(() async {
                                           _model.alInciodentCountFilter =
                                               await actions.getIncidentCount(
                                             FFAppState().storeID,
@@ -1386,7 +1357,51 @@ class _FilterBottomSheetWidgetState extends State<FilterBottomSheetWidget> {
                                           );
                                           FFAppState().incidentCount =
                                               _model.alInciodentCountFilter!;
+                                          FFAppState().currentOffsetAlert =
+                                              (getJsonField(
+                                                            FFAppState()
+                                                                .incidentCount,
+                                                            r'''$.count''',
+                                                          ) -
+                                                          2) >=
+                                                      0
+                                                  ? (getJsonField(
+                                                        FFAppState()
+                                                            .incidentCount,
+                                                        r'''$.count''',
+                                                      ) -
+                                                      2)
+                                                  : 0;
+                                          FFAppState().currentOffsetAlertTop =
+                                              FFAppState().currentOffsetAlert;
                                           safeSetState(() {});
+                                          _model.alInciodentData3 =
+                                              await actions.getIncident(
+                                            FFAppState().storeID,
+                                            FFAppState().finalIncident.toList(),
+                                            FFAppState().duration != 'Custom'
+                                                ? functions.getRangeOfDate(
+                                                    FFAppState().duration)
+                                                : dateTimeFormat(
+                                                    "yyyy-MM-dd",
+                                                    FFAppState()
+                                                        .finalStartDate),
+                                            FFAppState().duration != 'Custom'
+                                                ? dateTimeFormat("yyyy-MM-dd",
+                                                    getCurrentTimestamp)
+                                                : dateTimeFormat("yyyy-MM-dd",
+                                                    FFAppState().finalEndDate),
+                                            FFAppState().currentOffsetAlert,
+                                            5,
+                                            FFAppState().token,
+                                            FFAppState().listOrder,
+                                          );
+                                          FFAppState().IncidentUrl = _model
+                                              .alInciodentData3!
+                                              .toList()
+                                              .cast<dynamic>();
+                                          FFAppState().update(() {});
+                                          await widget.action?.call();
                                         }),
                                       ]);
                                     } else {

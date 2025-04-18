@@ -59,18 +59,18 @@ class IncidentScreenModel extends FlutterFlowModel<IncidentScreenWidget> {
   ApiCallResponse? apiResultnuu2;
   // Model for Appbar component.
   late AppbarModel appbarModel;
-  // Stores action output result for [Custom Action - getIncident] action in Container widget.
-  List<dynamic>? alInciodentDatatempall;
   // Stores action output result for [Custom Action - getIncidentCount] action in Container widget.
   dynamic alInciodentCounttempall;
   // Stores action output result for [Custom Action - getIncident] action in Container widget.
-  List<dynamic>? removeciodentData3;
+  List<dynamic>? alInciodentDatatempall;
   // Stores action output result for [Custom Action - getIncidentCount] action in Container widget.
   dynamic removenciodentCountFilter;
   // Stores action output result for [Custom Action - getIncident] action in Container widget.
-  List<dynamic>? removeciodentData;
+  List<dynamic>? removeciodentData3;
   // Stores action output result for [Custom Action - getIncidentCount] action in Container widget.
   dynamic removenciodentCount;
+  // Stores action output result for [Custom Action - getIncident] action in Container widget.
+  List<dynamic>? removeciodentData;
   // Stores action output result for [Custom Action - getIncident] action in LazyLoaderWidget widget.
   List<dynamic>? alInciodentData2;
   // Stores action output result for [Custom Action - getIncident] action in LazyLoaderWidget widget.
